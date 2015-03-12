@@ -1,0 +1,37 @@
+﻿@using HomeShare.Helper
+@using System.Collections.Generic;
+@model HomeShare.Models.DetailsModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details du bien</h2>
+
+
+<p><b>Titre:</b> @Model.BienCourant.Titre</p>
+<img src="~/Content/images/Biens/@Model.BienCourant.Photo" alt="" />
+<p><b>Accroche:</b> @Model.BienCourant.DescCourte</p>
+<p><b>Description:</b> @Model.BienCourant.DescLong</p>
+<p><b>Ville:</b> @Model.BienCourant.Ville</p>
+<p><b>Pays:</b> @Model.PaysBien.Libelle</p>
+<p><b>Capacité:</b> @Model.BienCourant.NombrePerson  personnes</p>
+<p><b>Disponible à l'échange depuis:</b> @Model.BienCourant.DateCreation.ToShortDateString()</p>
+
+<div id="libelle" style="display: inline-block" ><p><b>Liste des options:</b> @{Html.RenderPartial("_LesOptions", Model.BienCourant.ListeOptions);}</p></div>
+<div id="libelle" style="float:right"><p>@{Html.RenderPartial("_LesValeurs", Model.BienCourant.ListeOptionsBien);}</p></div>
+
+    <p>
+        <b>Propriétaire:</b> @Model.Proprio.Nom @Model.Proprio.Prenom
+        <b>Pays:</b> @Model.PaysMembre.Libelle
+    </p>
+
+    <h3>Les avis sur ce bien</h3>
+    @{
+        Html.RenderPartial("_LesAvis", @Model.BienCourant.ListeAvis);
+    }
+
+
+
+
+
+
