@@ -16,22 +16,10 @@ namespace HomeShare.Models
             set;
         }
 
-        public List<Membre> listeMembres
-        {
-            get;
-            set;
-        }
+        
 
-        public List<Pays> listePays
-        {
-            get;
-            set;
-        }
+                  
+      
 
-        public List<AvisMembreBien> listeAvis
-        {
-            get;
-            set;
-        }
     }
 }

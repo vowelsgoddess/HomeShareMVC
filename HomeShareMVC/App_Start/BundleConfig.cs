@@ -32,9 +32,9 @@ namespace HomeShareMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-            bundles.Add(new StyleBundle("~/Assets/css").Include(
-                      "~/Assets/style.css"));
+                      "~/Content/Site.css",
+                      "~/Content/extra.css",
+                      "~/Content/style.css"));
             bundles.Add(new StyleBundle("~/Assets/bootstrap").Include(
                       "~/Assets/bootstrap/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Assets/owl-carousel").Include(

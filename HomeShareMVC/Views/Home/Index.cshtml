@@ -3,16 +3,19 @@
     ViewBag.Title = "Accueil";
 }
 
+@{Html.RenderPartial("_Carousel");}
 
-<h2>Les meilleurs échanges</h2>
-@foreach (var item in Model)
-{
-    Html.RenderPartial("_MeilleursEchanges", item);
-}
 
-<h2>Les derniers biens en échange</h2>
 
 <div class="row text-center">
+    <h2>Les meilleurs biens en échange</h2>
+
+    @foreach (var item in Model)
+    {
+        Html.RenderPartial("_MeilleursBiens", item);
+    }
+    
+    <h2>Les derniers biens en échange</h2>
 
     @foreach (var item in Model)
     {

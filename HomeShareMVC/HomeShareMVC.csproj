@@ -150,10 +150,11 @@
     <Content Include="Assets\slitslider\js\jquery.ba-cond.min.js" />
     <Content Include="Assets\slitslider\js\jquery.slitslider.js" />
     <Content Include="Assets\slitslider\js\modernizr.custom.79639.js" />
-    <Content Include="Assets\style.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\extra.css" />
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\advertisements.jpg" />
     <Content Include="Content\images\agents\1.jpg" />
@@ -164,8 +165,16 @@
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bginside.jpg" />
     <Content Include="Content\images\bgmain.png" />
+    <Content Include="Content\images\Biens\cliff.jpg" />
+    <Content Include="Content\images\Biens\hut.jpg" />
+    <Content Include="Content\images\Biens\kitty.jpg" />
     <Content Include="Content\images\Biens\maisonSousMarine.jpg" />
+    <Content Include="Content\images\Biens\rainbow.jpg" />
     <Content Include="Content\images\Biens\rockHouse.jpg" />
+    <Content Include="Content\images\Biens\shoe.jpg" />
+    <Content Include="Content\images\Biens\smile.jpg" />
+    <Content Include="Content\images\Biens\tree.jpg" />
+    <Content Include="Content\images\Biens\upsidedown.jpg" />
     <Content Include="Content\images\blog\1.jpg" />
     <Content Include="Content\images\blog\2.jpg" />
     <Content Include="Content\images\blog\3.jpg" />
@@ -187,6 +196,7 @@
     <Content Include="Content\images\slider\5.jpg" />
     <Content Include="Content\images\twitter.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\din.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -202,6 +212,9 @@
     <Content Include="Areas\Membre\Views\web.config" />
     <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Panier\Views\web.config" />
+    <Content Include="fonts\din.eot" />
+    <Content Include="fonts\din.ttf" />
+    <Content Include="fonts\din.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -223,11 +236,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_DerniersBiens.cshtml" />
-    <Content Include="Views\Shared\_MeilleursEchanges.cshtml" />
+    <Content Include="Views\Shared\_Carousel.cshtml" />
     <Content Include="Views\Bien\Details.cshtml" />
     <Content Include="Views\Shared\_LesAvis.cshtml" />
     <Content Include="Views\Shared\_LesOptions.cshtml" />
     <Content Include="Views\Shared\_LesValeurs.cshtml" />
+    <Content Include="Views\Shared\_MeilleursBiens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HomeShare.DAL\HomeShare.DAL\HomeShare.DAL.csproj">

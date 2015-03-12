@@ -1,0 +1,79 @@
+﻿@model IEnumerable <HomeShare.DAL.BienEchange>
+
+@{
+    ViewBag.Title = "_Carousel";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="../../Content/images/Biens/kitty.jpg" alt=" ">
+            <div class="carousel-caption">
+                <h3>Pour les amoureux des chats</h3>
+                <p>Si vous voulez voir la vie en rose</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="../../Content/images/Biens/upsidedown.jpg" alt=" ">
+            <div class="carousel-caption">
+                <h3>Le monde à l'envers</h3>
+                <p>Maison inversée</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="../../Content/images/Biens/hut.jpg" alt=" ">
+            <div class="carousel-caption">
+                <h3>Cabane à l'ouest de l'Irlande</h3>
+                <p>Comme une moule sur son rocher</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="../../Content/images/Biens/cliff.jpg" alt=" ">
+            <div class="carousel-caption">
+                <h3>Vue panoramique sur l'océan</h3>
+                <p>Maison accrochée  à une falaise</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="banner-search">
+    <div class="container">
+        <!-- banner -->
+        <h3>Recherchez un bien</h3>
+        <div class="searchbar">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <input type="text" class="form-control" placeholder="Quel bien cherchez-vous?">
+                    <div class="row">
+                        
+                        <div class="col-lg-3 col-sm-4">
+                            <button class="btn btn-success" onclick="window.location.href='buysalerent.php'">Chercher !</button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
+                    <p>Inscrivez-vous maintenant et mettez votre bien en échange.</p>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /> <br />
