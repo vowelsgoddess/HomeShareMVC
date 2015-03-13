@@ -16,9 +16,28 @@ namespace HomeShare.Controllers
         // GET: /Home Page/
         public ActionResult Index(int Page = 1)
         {
-           Double d = (double)(HomeShare.DAL.BienEchange.ChargerLesMeilleursBiens().Count());
+           Double d = (double)(HomeShare.DAL.BienEchange.ChargerTousLesBiens().Count());
             ViewBag.tot = Math.Ceiling(d / 4);
             return View(HomeShare.DAL.BienEchange.ChargerPagination(Page));
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult Membres()
+        {
+            HomeModel HM = new HomeModel()
+            {
+                listeMembres = Membre.ChargerTousLesMembres()
+            };
+            return View(HM);
         }
     }
 }

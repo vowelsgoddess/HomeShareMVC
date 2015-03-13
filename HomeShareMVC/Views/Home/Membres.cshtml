@@ -1,0 +1,54 @@
+﻿@using HomeShare.Helper
+@using System.Collections.Generic;
+@model IEnumerable<HomeShare.DAL.Membre>
+
+@{
+    ViewBag.Title = "Liste des Membres";
+}
+
+<h2>Les membres actifs</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPays)
+        </th>
+        
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPays)
+            </td>
+            
+
+
+            <td>
+                @Html.ActionLink("Se déconnecter", "LogOut", new { id = item.IdMembre }) |
+                <a href="~/Membre/Home/LogOut/@item.IdMembre" onclick="return confirm('Voulez-vous vous déconnecter ?')">Se déconnecter</a>
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+

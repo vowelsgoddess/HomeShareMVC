@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HomeShare.DAL.BienEchange>
+﻿@using HomeShare.Helper
+@model IEnumerable<HomeShare.DAL.BienEchange>
 @{
     ViewBag.Title = "Accueil";
 }
@@ -8,6 +9,8 @@
 
 
 <div class="row text-center">
+
+    @Html.BoldTitle("", "laclasse")
     <h2>Les meilleurs biens en échange</h2>
 
     @foreach (var item in Model)

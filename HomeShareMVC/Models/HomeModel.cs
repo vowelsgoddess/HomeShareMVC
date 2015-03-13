@@ -8,18 +8,17 @@ namespace HomeShare.Models
 {
     public class HomeModel
     {
-        
 
-        public List<BienEchange> listeBiens
+        public List<Membre> listeMembres
         {
             get;
             set;
         }
 
-        
-
-                  
-      
-
+        public Pays PaysMembre
+        {
+            get;
+            set;
+        }
     }
 }

@@ -4,10 +4,17 @@ using System.Linq;
 using System.Web;
 using HomeShare.DAL;
 
+
 namespace HomeShare.Models
 {
     public class DetailsModel : HomeModel
     {
+        public List<BienEchange> listeBiens
+        {
+            get;
+            set;
+        }
+
         public BienEchange BienCourant
         {
             get;
@@ -49,6 +56,7 @@ namespace HomeShare.Models
             get;
             set;
         }
-                
+
+               
     }
 }

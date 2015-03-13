@@ -30,5 +30,14 @@ namespace HomeShareMVC.Controllers.Bien
 
             return View(DM);
         }
+
+        public ActionResult Biens()
+        {
+            DetailsModel DM = new DetailsModel()
+            {
+                listeBiens= BienEchange.ChargerTousLesBiens()
+            };
+            return View(DM);
+        }
 	}
 }

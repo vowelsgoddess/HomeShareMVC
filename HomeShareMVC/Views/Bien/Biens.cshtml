@@ -1,0 +1,62 @@
+﻿@using HomeShare.Helper
+@using System.Collections.Generic;
+@model IEnumerable<HomeShare.DAL.BienEchange>
+
+@{
+    ViewBag.Title = "Liste des Biens";
+}
+
+<h2>Les biens en échange</h2>
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescCourte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombrePerson)
+        </th>
+        
+        
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescCourte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePerson)
+            </td>
+            
+           
+            <td>
+                @Html.ActionLink("Modifier ce bien", "ModifierBien", new { id = item.IdBien }) |
+                <a href="~/Membre/Home/SupprimerBien/@item.IdBien" onclick="return confirm('Voulez-vous supprimer ce bien ?')">Supprimmer</a>
+                <a href="~/Membre/Home/ModifierBien/@item.IdBien" onclick="return confirm('Voulez-vous modifier ce bien ?')">Modifier</a>
+            </td>
+        </tr>
+    }
+
+</table>

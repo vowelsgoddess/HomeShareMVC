@@ -8,8 +8,7 @@
     <title>@ViewBag.Title - HomeShareMVC</title>
 
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Assets/css")
-    @Styles.Render("~/Assets/bootstrap")
+     @Styles.Render("~/Assets/bootstrap")
     @Styles.Render("~/Assets/owl-carousel")
     @Styles.Render("~/Assets/slitslider")
 
@@ -48,10 +47,10 @@
                 <div class="navbar-collapse  collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="~/Home/Index">Home</a></li>
-                        <li><a href="about.php">A propos de nous</a></li>
-                        <li><a href="agents.php">Les propriétaires</a></li>
-                        <li><a href="blog.php">Les biens en échange</a></li>
-                        <li><a href="contact.php">Contactez-nous</a></li>
+                        <li><a href="~/Home/About">A propos de nous</a></li>
+                        <li><a href="~/Home/Membres">Les propriétaires</a></li>
+                        <li><a href="~/Bien/Biens">Les biens en échange</a></li>
+                        <li><a href="~/Home/Contact">Contactez-nous</a></li>
                     </ul>
                 </div>
                 <!-- #Nav Ends -->
@@ -80,7 +79,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <div class="footer">
 
             <div class="row">
                 <div class="col-lg-3 col-sm-3">
@@ -105,9 +104,9 @@
                 </div>
             </div>
             <p class="copyright">Copyright 2015. All rights reserved.	</p>
-            
-        </footer>
-    </div>
+
+            </div>
+        </div>
 
     @RenderSection("scripts", required: false)
 </body>

@@ -1,4 +1,4 @@
-﻿using HomeShare.Areas.Panier.Models;
+﻿using HomeShare.Areas.Membre.Models;
 using HomeShare.DAL;
 using System;
 using System.Collections.Generic;
@@ -20,30 +20,10 @@ namespace HomeShare.Helper
             set { HttpContext.Current.Session["Login"] = value; }
         }
 
-        public static Panier Panier
+        public static Membre User
         {
-            get
-            {
-
-
-                if (HttpContext.Current.Session["Panier"] == null)
-                {
-                    HttpContext.Current.Session["Panier"] = new Panier();
-
-
-                }
-                return (Panier)HttpContext.Current.Session["Panier"];
-
-            }
-
-
-            set
-
-            { HttpContext.Current.Session["Panier"] = value; }
-
+            get { return (Membre)HttpContext.Current.Session["User"]; }
+            set { HttpContext.Current.Session["User"] = value; }
         }
-
-
-
     }
 }

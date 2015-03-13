@@ -1,22 +1,23 @@
-﻿using HomeShare.DAL;
+﻿using HomeShare.Areas.Membre.Models;
 using HomeShare.Helper;
+using HomeShare.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace HomeShare.Areas.Abonne.Controllers
+namespace HomeShare.Areas.Membre.Controllers
 {
     public class HomeController : Controller
     {
         //
-        // GET: /Abonne/Home/
+        // GET: /Member/Home/
         public ActionResult Index()
         {
-
             if (SessionMembre.Login != null)
             {
+
                 return View();
             }
             else
@@ -24,28 +25,34 @@ namespace HomeShare.Areas.Abonne.Controllers
                 return RedirectToAction("Login");
             }
         }
-        //recuperation de la vue Login
+
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
-        //recuperation des infos du membre
         [HttpPost]
-        public ActionResult Login(string login, string password)
+        public ActionResult Login(string txtLog, string txtPass)
         {
-            Membre m = Membre.ChargerMembreViaLogin(login, password);
-            if (m != null)
+            Membre m = Membre.ChargerMembreViaLogin(txtLog, txtPass);
+
+            if (m == null)
             {
-                SessionMembre.Login = m.Login;
-                return RedirectToAction("Index");
+                ViewBag.Error = "Essaie encore !!!";
+                return View();
             }
 
-            return View();
+            else
+            {
+                SessionMembre.Login = m.Login;
+                SessionMembre.User = m;
+
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+
         }
 
-        //inscription d'un membre
         [HttpGet]
         public ActionResult Inscription()
         {
@@ -53,34 +60,73 @@ namespace HomeShare.Areas.Abonne.Controllers
         }
 
         [HttpPost]
-        public ActionResult Inscription(string txtNom, string txtPrenom, string txtEmail, string txtTel, string txtLogin, string txtPassword)
+        public ActionResult Inscription(string txtNom, string txtPrenom, string txtEmail, int idPays, string txtTel, string txtLogin, string txtPassword)
         {
             Membre m = new Membre();
+            m.Nom = txtNom;
+            m.Prenom = txtPrenom;
+            m.Email = txtEmail;
+            m.IdPays = (int)idPays;
+            m.Telephone = txtTel;
+            m.Login = txtLogin;
+            m.Password = txtPassword;
             m.Sauvegarder();
 
             return RedirectToRoute(new { area = "Membre", controller = "Home", action = "Inscription" });
         }
 
 
-        //ajout d'un bien par un membre
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AjouterBien(BienEchange b, HttpPostedFileWrapper membre)
+        [HttpGet]
+        public ActionResult AjouterBien()
         {
             if (SessionMembre.Login == null)
             {
                 return RedirectToAction("Login");
             }
-            if (membre != null)
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AjouterBien(BienEchange b,
+           HttpPostedFileWrapper Fclient, string txtTitre, string txtdescCourt, string txtdescLong, int cap, int codePays,
+            string txtVille, string txtRue, int txtNumero, int txtCP, string txtPhoto,
+            bool txtAssurance, bool txtDispo, string txtLat, string txtLong, DateTime txtDate)
+        {
+
+
+            if (SessionMembre.Login == null)
             {
-                b.Photo = membre.FileName;
-                membre.SaveAs(@"Content\images\Biens\" + membre.FileName);
+                return RedirectToAction("Login");
+            }
+
+            if (Fclient != null)
+            {
+                b.Titre = txtTitre;
+                b.DescCourte = txtdescCourt;
+                b.DescLong = txtdescLong;
+                b.NombrePerson = cap;
+                b.IdPays = codePays;
+                b.Ville = txtVille;
+                b.Rue = txtRue;
+                b.Numero = txtNumero;
+                b.CodePostal = txtCP;
+                b.Photo = txtPhoto;
+                b.AssuranceObligatoire = txtAssurance;
+                b.IsEnabled = (bool)txtDispo;
+                b.Latitude = txtLat;
+                b.Longitude = txtLong;
+                b.DateCreation = (DateTime)txtDate;
+                b.Photo = Fclient.FileName;
+               
             }
             else
             {
                 b.Photo = "";
             }
+
             b.Sauvegarder();
+
             return RedirectToAction("Index");
         }
 
@@ -91,59 +137,60 @@ namespace HomeShare.Areas.Abonne.Controllers
             {
                 return RedirectToAction("Login");
             }
+
             return View(HomeShare.DAL.BienEchange.ChargerTousLesBiens());
         }
 
-
-        // Modifier un bien
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult ModifierBien(int id)
         {
             if (SessionMembre.Login == null)
             {
                 return RedirectToAction("Login");
             }
-            BienEchange b = BienEchange.ChargerUnBien(id);
-            return View(b);
+            BienEchange be = BienEchange.ChargerUnBien(id);
+            return View(be);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(BienEchange b, HttpPostedFileWrapper membre)
+        public ActionResult ModifierBien(BienEchange b, HttpPostedFileWrapper Fclient)
         {
             if (SessionMembre.Login == null)
             {
                 return RedirectToAction("Login");
             }
-            if (membre != null)
+            if (Fclient != null)
             {
-                b.Photo = membre.FileName;
-                membre.SaveAs(@"Content\images\Biens\" + membre.FileName);
+                b.Photo = Fclient.FileName;
+                Fclient.SaveAs(@"C:\Users\e.haultecoeur\Documents\visual studio 2013\Projects\HomeShare\HomeShare\Content\images\" + Fclient.FileName);
             }
             else
             {
                 b.Photo = BienEchange.ChargerUnBien(b.IdBien).Photo;
             }
+
             b.Sauvegarder();
             return RedirectToAction("Index");
         }
-        
-        //Supprimer un bien
+
         [HttpGet]
-        public ActionResult Supprime(int id)
+        public ActionResult SupprimerBien(int id)
         {
             if (SessionMembre.Login == null)
             {
                 return RedirectToAction("Login");
             }
-            BienEchange b = BienEchange.ChargerUnBien(id);
-            b.Supprimer();
+            BienEchange be = BienEchange.ChargerUnBien(id);
+            be.Supprimer();
             return RedirectToAction("ListeBiens");
         }
 
-        //Fermer la session
+
         public ActionResult LogOut()
         {
             SessionMembre.Login = null;
+            Session.Abandon();
             return RedirectToAction("Index");
         }
     }

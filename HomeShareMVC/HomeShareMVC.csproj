@@ -109,10 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Membre\Models\" />
-    <Folder Include="Areas\Membre\Views\Home\" />
-    <Folder Include="Areas\Panier\Views\Panier\" />
-    <Folder Include="Areas\Panier\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -120,15 +116,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Membre\Controllers\HomeController.cs" />
     <Compile Include="Areas\Membre\MembreAreaRegistration.cs" />
-    <Compile Include="Areas\Panier\Controllers\PanierController.cs" />
-    <Compile Include="Areas\Panier\Models\Ligne.cs" />
-    <Compile Include="Areas\Panier\Models\Panier.cs" />
-    <Compile Include="Areas\Panier\PanierAreaRegistration.cs" />
+    <Compile Include="Areas\Membre\Models\BiensMembreModel.cs" />
+    <Compile Include="Areas\Membre\Models\MembreModel.cs" />
     <Compile Include="Controllers\BienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CustomHelper.cs" />
     <Compile Include="Helper\SessionMembre.cs" />
     <Compile Include="Models\DetailsModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
@@ -210,11 +205,14 @@
     <Content Include="Assets\fonts\din.woff" />
     <Content Include="Assets\owl-carousel\.DS_Store" />
     <Content Include="Areas\Membre\Views\web.config" />
-    <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Panier\Views\web.config" />
     <Content Include="fonts\din.eot" />
     <Content Include="fonts\din.ttf" />
     <Content Include="fonts\din.woff" />
+    <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Membre\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Membre\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Membre\Views\Home\Inscription.cshtml" />
+    <Content Include="Areas\Membre\Views\Home\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -242,6 +240,10 @@
     <Content Include="Views\Shared\_LesOptions.cshtml" />
     <Content Include="Views\Shared\_LesValeurs.cshtml" />
     <Content Include="Views\Shared\_MeilleursBiens.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Bien\Biens.cshtml" />
+    <Content Include="Views\Home\Membres.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HomeShare.DAL\HomeShare.DAL\HomeShare.DAL.csproj">
